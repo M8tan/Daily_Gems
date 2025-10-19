@@ -4,4 +4,10 @@ cd .\
 git add .
 git commit -m "%Desc%"
 git push
-pause
+echo #
+echo #
+echo #
+
+echo Done!
+timeout /t 2 /nobreak>nul
+exit
