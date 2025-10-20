@@ -3,14 +3,14 @@ if(!Quoter_Module.Storage_File_Exists())
     Quoter_Module.Create_Storage_File()
 end
 
-puts("##########")
-puts("Welcome to our quoter!")
-Quoter_Module.Show_Menu()
-puts("##########")
+puts("##############################")
+puts("  Welcome to our quoter!")
+Quoter_Module.Show_Menu_Start()
+puts("##############################")
 puts("")
 running = true
 while(running)
-    print("WPlease choose an option: ")
+    print("Please choose an option: ")
     choice = gets.chomp
     case choice
     when "1"

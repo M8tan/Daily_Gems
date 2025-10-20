@@ -8,6 +8,9 @@ module Quoter_Module
     def self.Show_Menu()
         puts("1. Get quote\n2. Save previous quote\n3. Display this menu\n4. Get the saved quotes\n5. Exit")
     end
+    def self.Show_Menu_Start()
+        puts("  1. Get quote\n  2. Save previous quote\n  3. Display this menu\n  4. Get the saved quotes\n  5. Exit")
+    end
     def self.Get_Quote()
         begin
             api_response = HTTParty.get("https://zenquotes.io/api/random")
