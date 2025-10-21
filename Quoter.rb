@@ -31,6 +31,8 @@ while(running)
             puts(Quoter_Module.Read_Storage_File())
         end
     when "5"
+        Delete_Storage_File_Content()
+    when "9"
         running = false
         puts("OK! have a nice day :)")
         sleep 3

@@ -9,7 +9,7 @@ module Quoter_Module
         puts("1. Get quote\n2. Save previous quote\n3. Display this menu\n4. Get the saved quotes\n5. Exit")
     end
     def self.Show_Menu_Start()
-        puts("  1. Get quote\n  2. Save previous quote\n  3. Display this menu\n  4. Get the saved quotes\n  5. Exit")
+        puts("  1. Get quote\n  2. Save previous quote\n  3. Display this menu\n  4. Get the saved quotes\n  5. Delete saved quotes\n  9. Exit")
     end
     def self.Get_Quote()
         begin
@@ -23,8 +23,38 @@ module Quoter_Module
     def self.Storage_File_Exists()
         begin
             storage_file = File.open("Quoter_Storage.txt", "r")
+            storage_file.close()
             return true
         rescue
+            return false
+        end
+    end
+    def self.Storage_File_BU_Exists()
+        begin
+            storage_file = File.open("Quoter_Storage_BU.txt", "r")
+            storage_file.close()
+            return true
+        rescue
+            return false
+        end
+    end
+    def self.Storage_File_AutoBU_Exists()
+        begin
+            storage_file = File.open("Quoter_Storage_AutoBU.txt", "r")
+            storage_file.close()
+            return true
+        rescue
+            return false
+        end
+    end
+    def self.Storage_File_Any_BU_Exists()
+        if(Storage_File_BU_Exists() && Storage_File_AutoBU_Exists())
+            return true
+        elsif(Storage_File_BU_Exists() || Storage_File_AutoBU_Exists())
+            return true
+        elsif(Storage_File_AutoBU_Exists() || Storage_File_BU_Exists())
+            return true
+        else
             return false
         end
     end
@@ -51,5 +81,14 @@ module Quoter_Module
         storage_file.close()
         return storage_file_content
     end
-
+    def self.Delete_Storage_File_Content()
+        begin 
+            FileUtils.cp('Quoter_Storage.txt', 'Quoter_Storage_AutoBU.txt')
+            storage_file = File.open("Quoter_Storage.txt", "w")
+            storage_file.write("")
+            storage_file.close()
+        rescue StandardError => e
+            puts("Oh damn, #{e.message}")
+        end
+    end
 end  
