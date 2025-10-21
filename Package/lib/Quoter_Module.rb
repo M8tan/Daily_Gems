@@ -127,25 +127,14 @@ module Quoter_Module
         end
     end
     def self.Delete_Storage_File_Content()
-        if(Storage_File_BU_Exists())
-            begin 
-                storage_file = File.open("Quoter_Storage.txt", "w")
-                storage_file.write("")
-                storage_file.close()
-                puts("Deleted file content!")
-            rescue StandardError => e
-                puts("Oh damn, #{e.message}")
-        end
-        else
-            begin 
-                FileUtils.cp('Quoter_Storage.txt', 'Quoter_Storage_AutoBU.txt')
-                storage_file = File.open("Quoter_Storage.txt", "w")
-                storage_file.write("")
-                storage_file.close()
-                puts("Deleted file content!")
-            rescue StandardError => e
-                puts("Oh damn, #{e.message}")
-            end
+        begin 
+            FileUtils.cp('Quoter_Storage.txt', 'Quoter_Storage_AutoBU.txt')
+            storage_file = File.open("Quoter_Storage.txt", "w")
+            storage_file.write("")
+            storage_file.close()
+            puts("Deleted file content!")
+        rescue StandardError => e
+            puts("Oh damn, #{e.message}")
         end
     end
     def self.Hard_Delete()

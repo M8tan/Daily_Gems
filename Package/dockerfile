@@ -1,0 +1,19 @@
+# Use a base Ruby image
+FROM ruby:3.2
+
+# Set working directory
+WORKDIR /app
+
+# Install any necessary gems (e.g., httparty)
+# Copy Gemfile first to cache bundler install
+COPY Gemfile Gemfile.lock ./
+RUN gem install bundler && bundle install
+
+# Then copy the rest of the files
+COPY app.rb Quoter_Module.rb ./
+
+# Copy your Ruby files into the container
+COPY app.rb Quoter_Module.rb ./
+
+# Set the command to run your app
+ENTRYPOINT ["ruby", "app.rb"]
