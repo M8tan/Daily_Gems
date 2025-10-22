@@ -1,4 +1,5 @@
-def Get_Working_Directory()
-    return Dir.pwd
-end
-puts(Get_Working_Directory())
+require "httparty"
+require "json"
+
+    response = HTTParty.get("https://api.viewbits.com/v1/uselessfacts?mode=random")
+    puts response["text"]
