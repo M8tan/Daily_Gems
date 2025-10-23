@@ -155,4 +155,30 @@ module Quoter_Module
             puts("No hard delete! #{e.message}")
         end
     end
+    def self.Get_Fact()
+        begin
+            api_response = HTTParty.get("https://api.viewbits.com/v1/uselessfacts?mode=random")
+            formmated = JSON.parse(api_response.body)
+            return formmated["text"]
+        rescue => e 
+            return "Error: #{e.message}"
+        end
+    end
+    def self.Get_LifeHack()
+        begin
+            api_response = HTTParty.get("https://api.viewbits.com/v1/lifehacks?mode=random")
+            formmated = JSON.parse(api_response.body)
+            return formmated["text"]
+        rescue => e 
+            return "Error: #{e.message}"
+        end
+    end
+    def self.Coin_Flip()
+        random_number = Random.rand(1..2)
+        if(random_number == 1)
+            return "Heads"
+        else
+            return "Tails"
+        end
+    end
 end  

@@ -62,6 +62,12 @@ while(running)
         Quoter_Module.Hard_Delete()
     when "help"
         puts("The directory in which the files run containes your saved quotes and backups.\nThe saved quotes file is called Quoter_Storage.txt, if you create a backup it will be called Quoter_Storage_BU.txt,\nAnd if you delete your saved quotes by choosing 8, a backup file will be created automatically,\nnamed Quoter_Storage_AutoBU.txt.\nWhen restoring the storage, it will check if any backups exist, and if so, it will do it's best to restore it.")
+    when "fact"
+        puts(Quoter_Module.Get_Fact())
+    when "lifehack"
+        puts(Quoter_Module.Get_LifeHack())
+    when "coinflip"
+        puts(Quoter_Module.Coin_Flip())
     else
         puts("Invalid choice :)")
     end
