@@ -68,6 +68,8 @@ while(running)
         puts(Quoter_Module.Get_LifeHack())
     when "coinflip"
         puts(Quoter_Module.Coin_Flip())
+    when "easteregg"
+        puts("10, hardelete, help, fact, lifehack, coinflip, easteregg\n")
     else
         puts("Invalid choice :)")
     end
